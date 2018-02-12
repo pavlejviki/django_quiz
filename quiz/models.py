@@ -51,8 +51,8 @@ class SubCategory(models.Model):
         max_length=250, blank=True, null=True)
 
     category = models.ForeignKey(
-        Category, null=True, blank=True,
-        verbose_name=_("Category"), on_delete=models.CASCADE)
+        Category, null=True, blank=True, on_delete=models.CASCADE,
+        verbose_name=_("Category"))
 
     objects = CategoryManager()
 
@@ -81,8 +81,8 @@ class Quiz(models.Model):
         verbose_name=_("user friendly url"))
 
     category = models.ForeignKey(
-        Category, null=True, blank=True,
-        verbose_name=_("Category"), on_delete=models.CASCADE)
+        Category, null=True, blank=True, on_delete=models.CASCADE,
+        verbose_name=_("Category"))
 
     random_order = models.BooleanField(
         blank=False, default=False,
@@ -554,12 +554,14 @@ class Question(models.Model):
 
     category = models.ForeignKey(Category,
                                  verbose_name=_("Category"),
+                                 on_delete=models.CASCADE,
                                  blank=True,
                                  null=True,
                                  on_delete=models.CASCADE)
 
     sub_category = models.ForeignKey(SubCategory,
                                      verbose_name=_("Sub-Category"),
+                                     on_delete=models.CASCADE,
                                      blank=True,
                                      null=True,
                                      on_delete=models.CASCADE)
