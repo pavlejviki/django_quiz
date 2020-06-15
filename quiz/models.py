@@ -9,10 +9,10 @@ from django.core.validators import (
 )
 from django.utils.translation import ugettext_lazy as _
 from django.utils.timezone import now
-from django.utils.encoding import python_2_unicode_compatible
 from django.conf import settings
 
 from model_utils.managers import InheritanceManager
+from six import python_2_unicode_compatible
 
 
 class CategoryManager(models.Manager):
@@ -554,14 +554,12 @@ class Question(models.Model):
 
     category = models.ForeignKey(Category,
                                  verbose_name=_("Category"),
-                                 on_delete=models.CASCADE,
                                  blank=True,
                                  null=True,
                                  on_delete=models.CASCADE)
 
     sub_category = models.ForeignKey(SubCategory,
                                      verbose_name=_("Sub-Category"),
-                                     on_delete=models.CASCADE,
                                      blank=True,
                                      null=True,
                                      on_delete=models.CASCADE)
